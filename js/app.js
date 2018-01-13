@@ -1,3 +1,11 @@
+// TODO: 1. My game will reset as soon as it's over so I can play again
+// TODO: a. set all cells to innerHTML ""
+// TODO: b. set turn to 1
+// TODO: c. set player title to visible/block
+// TODO: 2. I can play a game of Tic Tac Toe with the computer
+// TODO: a. find total number of empty cells, and pick a random cell to populate
+// TODO: 3. I can choose whether I want to play as X or O
+
 var cell0 = document.getElementById('0');
 var cell1 = document.getElementById('1');
 var cell2 = document.getElementById('2');
