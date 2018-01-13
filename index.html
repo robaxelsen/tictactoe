@@ -1,16 +1,46 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="utf-8">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div id="tictactoe">
-      <ul id="grid">
-
-      </ul>
+</head>
+<body>
+<div id="root">
+    <div class="player">
+        <div id="player-1">PLAYER: 1 (X)</div>
+        <div id="player-2">PLAYER: 2 (O)</div>
     </div>
-    <script src="app.js" charset="utf-8"></script>
-  </body>
+    <div id="tictactoe">
+        <div class="cell" onClick="clickCell('0')">
+            <div id="0" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('1')">
+            <div id="1" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('2')">
+            <div id="2" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('3')">
+            <div id="3" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('4')">
+            <div id="4" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('5')">
+            <div id="5" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('6')">
+            <div id="6" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('7')">
+            <div id="7" class="text"></div>
+        </div>
+        <div class="cell" onClick="clickCell('8')">
+            <div id="8" class="text"></div>
+        </div>
+    </div>
+</div>
+<script src="js/app.js"></script>
+</body>
 </html>

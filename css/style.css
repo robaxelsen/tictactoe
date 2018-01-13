@@ -1,0 +1,29 @@
+#root {
+  position: relative;
+}
+#tictactoe {
+  margin: 50px auto;
+  width: 600px;
+  height: 600px;
+}
+.cell {
+  height: 196px;
+  width: 196px;
+  background: #0f0;
+  float: left;
+  border: 2px solid #000;
+}
+.text {
+  margin: 30% auto;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 500;
+}
+.player {
+  padding-top: 30px;
+  text-align: center;
+  font-size: 3rem;
+}
+.player #player-2 {
+  display: none;
+}
