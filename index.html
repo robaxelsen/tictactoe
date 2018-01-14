@@ -9,22 +9,17 @@
 <div id="root">
     <div class="player">
         <div id="status">
-            YOU ARE:
-            <span id="as-x">X</span>
-            <span id="as-o">O</span>
+			<span id="symbol">
+				YOUR SYMBOL: X
+			</span>
         </div>
-        <div id="change-symbol">
-            PLAY AS:
-            <span id="change-x">
-                <button onClick="changeToX()">
-                    X
-                </button>
-            </span>
-            <span id="change-o">
-                <button onClick="changeToO()">
-                    O
-                </button>
-            </span>
+        <div id="won">
+            <button id="o-won">
+                O WON | O WON | O WON
+            </button>
+            <button id="x-won">
+                X WON | X WON | X WON
+            </button>
         </div>
     </div>
     <div id="tictactoe">
@@ -55,6 +50,11 @@
         <div class="cell" onClick="clickCell('8')">
             <div id="8" class="text"></div>
         </div>
+    </div>
+    <div style="text-align:center;">
+        <button onClick="changeSymbol()" id="symbol-button">
+            CHANGE SYMBOL
+        </button>
     </div>
 </div>
 <script src="js/app.js"></script>

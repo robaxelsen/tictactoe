@@ -27,3 +27,42 @@
 .player #as-o {
   display: none;
 }
+.player #o-won {
+  display: none;
+}
+.player #x-won {
+  display: none;
+}
+#won {
+  text-align: center;
+}
+#symbol-button {
+  background: #0f0;
+  height: 50px;
+  font-size: 22px;
+  text-align: center;
+  border: 0;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+  padding: 0 10px;
+}
+#o-won {
+  background: #0f0;
+  height: 50px;
+  font-size: 40px;
+  text-align: center;
+  border: 0;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+  padding: 0 10px;
+}
+#x-won {
+  background: #0f0;
+  height: 50px;
+  font-size: 40px;
+  text-align: center;
+  border: 0;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+  padding: 0 10px;
+}
