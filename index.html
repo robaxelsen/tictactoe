@@ -8,8 +8,24 @@
 <body>
 <div id="root">
     <div class="player">
-        <div id="player-1">PLAYER: 1 (X)</div>
-        <div id="player-2">PLAYER: 2 (O)</div>
+        <div id="status">
+            YOU ARE:
+            <span id="as-x">X</span>
+            <span id="as-o">O</span>
+        </div>
+        <div id="change-symbol">
+            PLAY AS:
+            <span id="change-x">
+                <button onClick="changeToX()">
+                    X
+                </button>
+            </span>
+            <span id="change-o">
+                <button onClick="changeToO()">
+                    O
+                </button>
+            </span>
+        </div>
     </div>
     <div id="tictactoe">
         <div class="cell" onClick="clickCell('0')">

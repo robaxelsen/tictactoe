@@ -4,7 +4,9 @@
 // DONE: c. set player title to visible/block
 // DONE: 2. I can play a game of Tic Tac Toe with the computer
 // DONE: a. find total number of empty cells, and pick a random cell to populate
-// TODO: 3. I can choose whether I want to play as X or O
+// DONE: 3. I can choose whether I want to play as X or O
+// TODO: 4. Styling
+// TODO: 5. Final testing and cleanup
 
 var cell0 = document.getElementById('0');
 var cell1 = document.getElementById('1');
@@ -15,11 +17,11 @@ var cell5 = document.getElementById('5');
 var cell6 = document.getElementById('6');
 var cell7 = document.getElementById('7');
 var cell8 = document.getElementById('8');
-var p1 = document.getElementById('player-1');
-var p2 = document.getElementById('player-2');
+var statusX = document.getElementById('as-x');
+var statusO = document.getElementById('as-o');
 var turn = 1;
 var gameOver = false;
-
+var playerSymbol = "X";
 
 var states = [
     // [0], [1], [2]
@@ -31,6 +33,7 @@ var states = [
 ];
 
 var computerPlays = () => {
+    var computerToken = playerSymbol === "X" ? "O" : "X";
     var emptyCells = [];
     //var playerSymbol;
     var randomCellIndex;
@@ -41,25 +44,24 @@ var computerPlays = () => {
         };
     });
     randomCellIndex = Math.floor(Math.random() * ((emptyCells.length - 1) - 0 + 1)) + 0;
-    states[parseInt(emptyCells[randomCellIndex])].innerHTML = "O";
-    checkWin('O');
+    states[parseInt(emptyCells[randomCellIndex])].innerHTML = computerToken;
+    checkWin(computerToken, 'COMPUTER');
 }
 
 var resetGame = () => {
     for (var id=0;id < 9;id++) {
         states[id].innerHTML = "";
     };
-    p1.style.display = "block";
-    p2.style.display = "none";
+    statusX.style.display = "inline-block";
+    statusO.style.display = "none";
     turn = 1;
 };
 
 var clickCell = (id) => {
     if (states[id].innerHTML === "") {
-        states[id].innerHTML = "X";
-        checkWin('X');
+        states[id].innerHTML = playerSymbol;
+        checkWin(playerSymbol, 'YOU');
         turn ++;
-        changePlayer();
         computerPlays();
     };
     if (gameOver) {
@@ -68,43 +70,45 @@ var clickCell = (id) => {
     };
 };
 
-var changePlayer = () => {
-    if (turn % 2 === 0) {
-        p2.style.display = "block";
-        p1.style.display = "none";
-    } else {
-        p1.style.display = "block";
-        p2.style.display = "none";
-    };
+var changeToX = () => {
+    playerSymbol = "X";
+    statusX.style.display = "inline-block";
+    statusO.style.display = "none";
 };
 
-var checkWin = (symbol) => {
+var changeToO = () => {
+    playerSymbol = "O";
+    statusO.style.display = "inline-block";
+    statusX.style.display = "none";
+};
+
+var checkWin = (symbol, player) => {
     if (states[0].innerHTML === symbol && states[1].innerHTML === symbol && states[2].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[3].innerHTML === symbol && states[4].innerHTML === symbol && states[5].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[6].innerHTML === symbol && states[7].innerHTML === symbol && states[8].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[0].innerHTML === symbol && states[4].innerHTML === symbol && states[8].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[2].innerHTML === symbol && states[4].innerHTML === symbol && states[6].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[3].innerHTML === symbol && states[4].innerHTML === symbol && states[5].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[0].innerHTML === symbol && states[3].innerHTML === symbol && states[6].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[1].innerHTML === symbol && states[4].innerHTML === symbol && states[7].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     } else if (states[2].innerHTML === symbol && states[5].innerHTML === symbol && states[8].innerHTML === symbol) {
         gameOver = true;
-        alert(`${symbol} WON THE GAME`);
+        alert(`${player} WON THE GAME`);
     };
 };
