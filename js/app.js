@@ -2,8 +2,8 @@
 // DONE: a. set all cells to innerHTML ""
 // DONE: b. set turn to 1
 // DONE: c. set player title to visible/block
-// TODO: 2. I can play a game of Tic Tac Toe with the computer
-// TODO: a. find total number of empty cells, and pick a random cell to populate
+// DONE: 2. I can play a game of Tic Tac Toe with the computer
+// DONE: a. find total number of empty cells, and pick a random cell to populate
 // TODO: 3. I can choose whether I want to play as X or O
 
 var cell0 = document.getElementById('0');
@@ -20,14 +20,6 @@ var p2 = document.getElementById('player-2');
 var turn = 1;
 var gameOver = false;
 
-var resetGame = () => {
-    for (var id=0;id < 9;id++) {
-        states[id].innerHTML = "";
-    };
-    p1.style.display = "block";
-    p2.style.display = "none";
-    turn = 1;
-};
 
 var states = [
     // [0], [1], [2]
@@ -38,22 +30,41 @@ var states = [
     cell6, cell7, cell8
 ];
 
+var computerPlays = () => {
+    var emptyCells = [];
+    //var playerSymbol;
+    var randomCellIndex;
+    var randomCell;
+    states.forEach((state, index) => {
+        if (state.innerHTML === "") {
+            emptyCells.push(index);
+        };
+    });
+    randomCellIndex = Math.floor(Math.random() * ((emptyCells.length - 1) - 0 + 1)) + 0;
+    states[parseInt(emptyCells[randomCellIndex])].innerHTML = "O";
+    checkWin('O');
+}
+
+var resetGame = () => {
+    for (var id=0;id < 9;id++) {
+        states[id].innerHTML = "";
+    };
+    p1.style.display = "block";
+    p2.style.display = "none";
+    turn = 1;
+};
+
 var clickCell = (id) => {
     if (states[id].innerHTML === "") {
-        if (turn % 2 === 0) {
-            states[id].innerHTML = "O"
-            checkWin('O');
-        } else {
-            states[id].innerHTML = "X"
-            checkWin('X');
-        }
+        states[id].innerHTML = "X";
+        checkWin('X');
+        turn ++;
+        changePlayer();
+        computerPlays();
     };
     if (gameOver) {
         resetGame();
         gameOver = false;
-    } else {
-        turn ++;
-        changePlayer();
     };
 };
 
