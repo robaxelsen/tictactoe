@@ -1,7 +1,7 @@
-// TODO: 1. My game will reset as soon as it's over so I can play again
-// TODO: a. set all cells to innerHTML ""
-// TODO: b. set turn to 1
-// TODO: c. set player title to visible/block
+// DONE: 1. My game will reset as soon as it's over so I can play again
+// DONE: a. set all cells to innerHTML ""
+// DONE: b. set turn to 1
+// DONE: c. set player title to visible/block
 // TODO: 2. I can play a game of Tic Tac Toe with the computer
 // TODO: a. find total number of empty cells, and pick a random cell to populate
 // TODO: 3. I can choose whether I want to play as X or O
@@ -18,6 +18,16 @@ var cell8 = document.getElementById('8');
 var p1 = document.getElementById('player-1');
 var p2 = document.getElementById('player-2');
 var turn = 1;
+var gameOver = false;
+
+var resetGame = () => {
+    for (var id=0;id < 9;id++) {
+        states[id].innerHTML = "";
+    };
+    p1.style.display = "block";
+    p2.style.display = "none";
+    turn = 1;
+};
 
 var states = [
     // [0], [1], [2]
@@ -32,44 +42,58 @@ var clickCell = (id) => {
     if (states[id].innerHTML === "") {
         if (turn % 2 === 0) {
             states[id].innerHTML = "O"
+            checkWin('O');
         } else {
             states[id].innerHTML = "X"
+            checkWin('X');
         }
     };
-    checkWin('X');
-    checkWin('O');
-    turn ++;
-    changePlayer();
+    if (gameOver) {
+        resetGame();
+        gameOver = false;
+    } else {
+        turn ++;
+        changePlayer();
+    };
 };
 
 var changePlayer = () => {
     if (turn % 2 === 0) {
-        p1.style.display = "block";
-        p2.style.display = "none";
-    } else {
         p2.style.display = "block";
         p1.style.display = "none";
+    } else {
+        p1.style.display = "block";
+        p2.style.display = "none";
     };
 };
 
 var checkWin = (symbol) => {
     if (states[0].innerHTML === symbol && states[1].innerHTML === symbol && states[2].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[3].innerHTML === symbol && states[4].innerHTML === symbol && states[5].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[6].innerHTML === symbol && states[7].innerHTML === symbol && states[8].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[0].innerHTML === symbol && states[4].innerHTML === symbol && states[8].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[2].innerHTML === symbol && states[4].innerHTML === symbol && states[6].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[3].innerHTML === symbol && states[4].innerHTML === symbol && states[5].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[0].innerHTML === symbol && states[3].innerHTML === symbol && states[6].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[1].innerHTML === symbol && states[4].innerHTML === symbol && states[7].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     } else if (states[2].innerHTML === symbol && states[5].innerHTML === symbol && states[8].innerHTML === symbol) {
+        gameOver = true;
         alert(`${symbol} WON THE GAME`);
     };
 };
